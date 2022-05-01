@@ -1,0 +1,3 @@
+# ChatTriggers
+
+My ChatTriggers Module
