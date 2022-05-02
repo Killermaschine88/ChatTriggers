@@ -1,7 +1,0 @@
-{
-    "name": "AhSniper",
-    "creator": "Baltraz",
-    "description": "AH Sniper",
-    "entry": "index.js",
-    "requires": ["RequestV2", "Vigilance"]
-  }

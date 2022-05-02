@@ -78,15 +78,14 @@ register("command", (arg1) => {
   }
 }).setName("ahdivider");
 
-
 //DEBUG
 
 const testObject = {
-  name:"Aurora Helmet",
-  price:"30,300,000",
-  rarity:"LEGENDARY",
-  command:"/viewauction 055b2876e20a498383e1a0d4196a33d7"
-}
+  name: "Aurora Helmet",
+  price: "30,300,000",
+  rarity: "LEGENDARY",
+  command: "/viewauction 055b2876e20a498383e1a0d4196a33d7",
+};
 
 function sendTestMessage(testObject) {
   //if (!started) return;
@@ -104,34 +103,34 @@ function sendTestMessage(testObject) {
 //TODO: Port old commands to Settings and implement them in code
 
 register("command", (...args) => {
-  if(args === undefined) {
+  if (args === undefined) {
     return Settings.openGUI();
-  };
+  }
   let args2 = [];
-  if(args.length > 1) {
-    args.forEach(arg => {
+  if (args.length > 1) {
+    args.forEach((arg) => {
       args2[args.indexOf(arg)] = arg;
     });
-  };
-  if("add".includes(args[0])) {
+  }
+  if ("add".includes(args[0])) {
     try {
       FileUtils.add(args);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "add"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
-    };
-  };
-  if("remove".includes(args[0])) {
+    }
+  }
+  if ("remove".includes(args[0])) {
     try {
       FileUtils.remove(args);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "remove"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
-    };
-  };
-  if("list".includes(args[0])) {
+    }
+  }
+  if ("list".includes(args[0])) {
     try {
       FileUtils.list();
     } catch (e) {
@@ -140,12 +139,13 @@ register("command", (...args) => {
       console.log(`Command: "list"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
   }
-}).setTabCompletions("add", "remove", "list").setName("ahbot");
-
+})
+  .setTabCompletions("add", "remove", "list")
+  .setName("su");
 
 function sendMessage(item) {
   if (!started) return;
-  let colorcode = "a"
+  let colorcode = "a";
   let price = item.price.replace(/,/g, "");
   if (price > 20000000 && color) {
     colorcode = "c";
