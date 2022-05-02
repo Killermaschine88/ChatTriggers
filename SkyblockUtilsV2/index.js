@@ -17,8 +17,12 @@ let lists = FileUtils.getLists();
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
-  if (Settings.phraseFilter && lists.wordFilter.some((word) => message.includes(word))) {
-    cancel(event);
+  if (Settings.phraseFilter) {
+    for(const word of lists.wordFilter) {
+      if(message.includes(word)) {
+        return cancel(event)
+      }
+    }
   }
 
   //Vanquisher Message
