@@ -22,7 +22,7 @@ register("chat", (message, event) => {
 
   //Vanquisher Message
   if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.command(`pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`);
+    ChatLib.command(`pc Vanquisher spawning at: ${Player.getX().toFixed(2)} ${Player.getY().toFixed(2)} ${Player.getZ().toFixed(2)}`);
   }
 }).setCriteria("${message}");
 

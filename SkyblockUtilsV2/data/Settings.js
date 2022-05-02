@@ -34,21 +34,21 @@ class Settings {
   })
   maxPrice = "";
 
-  //Filter
-  @SwitchProperty({
-    name: "Phrase Filter",
-    description: "Enable/Disable Filter out certain Phrases or Words from a list you make using /su word-list add myWord",
-    category: "Filter",
-  })
-  phrases_filter = false;
-
-  //QOL
+  //Nether
   @SwitchProperty({
     name: "Vanquisher Spawn Message",
     description: "Send a Message in Party Chat containing your location if a Vanquisher Spawns",
-    category: "QOL",
+    category: "Nether",
   })
   vanquisherMessage = false;
+
+  //Filter
+  @SwitchProperty({
+    name: "Phrase Filter",
+    description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su word-list add myWord",
+    category: "Filter",
+  })
+  phrases_filter = false;
 
   constructor() {
     this.initialize(this);

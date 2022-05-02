@@ -39,4 +39,23 @@ export function add(newItem, file) {
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
 }
 
+export function remove(newItem, file) {
+  let list = JSON.parse(FileLib.read(Const.moduleName, `constants/${file}.json`));
+  if (list == null) return ChatLib.chat("§4Error: The File to remove the items at doesn't exist!");
+  let args = [];
+  newItem.forEach((arg) => {
+    args[newItem.indexOf(arg)] = arg;
+  });
+  newItem.reverse().pop();
+  if (newItem.length > 1) {
+    newItem.reverse();
+  }
+  newItem = newItem.toString().replace(/,/g, " ");
+  newItemLow = newItem.toLowerCase();
+  if (!isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Doesn't exists in the list`);
+  const item = list.find(entry => entry === newItem)
+  list = list.splice(item, 1)
+  FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
+}
+
 //TODO: Make the remove function and make it work for command also check if Item is even in list!
