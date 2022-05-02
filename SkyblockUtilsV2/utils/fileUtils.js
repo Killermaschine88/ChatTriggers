@@ -53,9 +53,16 @@ export function remove(newItem, file) {
   newItem = newItem.toString().replace(/,/g, " ");
   newItemLow = newItem.toLowerCase();
   if (!isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Doesn't exists in the list`);
-  const item = list.find(entry => entry === newItem)
-  list = list.splice(item, 1)
+  const item = list.find((entry) => entry === newItem);
+  list = list.splice(item, 1);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
+}
+
+export function getLists() {
+  return {
+    flipperFilter: JSON.parse(FileLib.read(Const.moduleName, `constants/flipper.json`)) || [],
+    wordFilter: JSON.parse(FileLib.read(Const.moduleName, `constants/filter.json`)) || [],
+  };
 }
 
 //TODO: Make the remove function and make it work for command also check if Item is even in list!

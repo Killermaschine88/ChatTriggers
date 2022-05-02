@@ -55,7 +55,7 @@ class Settings {
     description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su word-list add myWord",
     category: "Filter",
   })
-  phrases_filter = false;
+  phrasesFilter = false;
 
   constructor() {
     this.initialize(this);

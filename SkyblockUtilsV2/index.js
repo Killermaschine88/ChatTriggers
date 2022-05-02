@@ -12,17 +12,18 @@ let sent = [];
 let running = false;
 let color = true;
 let divider = 5;
+let lists = FileUtils.getLists();
 
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
-  if (Settings.phrase_filter && [].some((word) => message.includes(word))) {
+  if (Settings.phraseFilter && lists.wordFilter.some((word) => message.includes(word))) {
     cancel(event);
   }
 
   //Vanquisher Message
   if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.command(`pc Vanquisher spawning at: ${Player.getX().toFixed(2)} ${Player.getY().toFixed(2)} ${Player.getZ().toFixed(2)}`);
+    ChatLib.command(`pc Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
   }
 
   //when coordinates are detected in chat offer a menu to click if you want to set a marker at those coords for 2 minutes [Yes / No] and then have a simple display there showing the coords
@@ -31,7 +32,7 @@ register("chat", (message, event) => {
 register("step", () => {
   if (!Settings.enabled) return;
   if (running) return;
-  return
+  return;
   running = true;
   ChatLib.chat(`${Const.prefix} Started searching for Items.`);
   if (j % divider === 0) {
@@ -105,6 +106,7 @@ register("command", (...args) => {
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "add"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
+    lists = FileUtils.getLists();
   }
   if ("remove".includes(args[1])) {
     try {
@@ -114,6 +116,7 @@ register("command", (...args) => {
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "remove"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
+    lists = FileUtils.getLists();
   }
   if ("list".includes(args[1])) {
     try {
