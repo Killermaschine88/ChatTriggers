@@ -1,8 +1,9 @@
 import { @Vigilant, @SwitchProperty, @CheckboxProperty, @TextProperty } from "Vigilance";
+import * as Const from "../utils/constants";
 
 //Pretty simple for now no? Remember to ignore errors shown in editor
 
-@Vigilant("SkyblockUtils", "§eSkyblockUtils")
+@Vigilant(Const.moduleName, `§e${Const.moduleName}`)
 class Settings {
   //Flipper
   @SwitchProperty({

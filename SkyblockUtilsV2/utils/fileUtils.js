@@ -1,7 +1,8 @@
 import * as constants from "./constants";
+import * as Const from "./constants";
 
 export function list(file) {
-  let list = JSON.parse(FileLib.read("SkyblockUtils", `constants/${file}.json`));
+  let list = JSON.parse(FileLib.read(Const.moduleName, `constants/${file}.json`));
   if (list == null) return ChatLib.chat("§4Error: The File to save the items in doesn't exist!");
   ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r\n§CThe List Contains:`);
   list.forEach((item) => {
@@ -21,7 +22,7 @@ function isIn(list, search) {
 }
 
 export function add(newItem, file) {
-  let list = JSON.parse(FileLib.read("SkyblockUtils", `constants/${file}.json`));
+  let list = JSON.parse(FileLib.read(Const.moduleName, `constants/${file}.json`));
   if (list == null) return ChatLib.chat("§4Error: The File to save the items in doesn't exist!");
   let args = [];
   newItem.forEach((arg) => {
@@ -35,7 +36,7 @@ export function add(newItem, file) {
   newItemLow = newItem.toLowerCase();
   if (isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Already exists in the list`);
   list.push(newItem);
-  FileLib.write("SkyblockUtils", `constants/${file}.json`, JSON.stringify(list, null, "\t"));
+  FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
 }
 
 //TODO: Make the remove function and make it work for command also check if Item is even in list!
