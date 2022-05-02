@@ -19,7 +19,6 @@ let waypoints = [];
 
 register("renderWorld", () => {
   waypoints.forEach((waypoint) => {
-    ChatLib.chat(`x: ${waypoint.x}, y: ${waypoint.y}, z: ${waypoint.z}`)
     Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.5, true);
   })
 });
@@ -103,7 +102,7 @@ register("command", (...args) => {
   }
   if (args[0] === "help") {
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
-    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper add/remove/list Word\n/su filter add/remove/list Word\n\nA Word is only required when using add or remove.`);
+    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper add/remove/list Word\n/su filter add/remove/list Word\n/su waypoint clear\n/su waypoint X Y Z\n\nA Word is only required when using add or remove.`);
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
     return;
   }
@@ -144,13 +143,18 @@ register("command", (...args) => {
 
   //Waypoint
   if ("waypoint".includes(args[0])) {
+    if("clear".includes(args[1])) {
+      waypoints = []
+      return ChatLib.chat(`${Const.prefix} Cleared Waypoints`)
+    }
+    
     if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
     waypoints.push({
       x: args2[1].trim(),
       y: args2[2].trim(),
       z: args2[3].trim(),
     });
-    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}, ${waypoints.length} Waypoints atm`);
+    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}`);
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
