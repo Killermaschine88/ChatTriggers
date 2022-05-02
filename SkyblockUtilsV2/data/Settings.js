@@ -57,6 +57,19 @@ class Settings {
   })
   phrasesFilter = false;
 
+  //Waypoints
+  @SwitchProperty({
+    name: "Waypoint shown",
+    description: "If Waypoints you add should be shown in-game",
+    category: "Waypoint",
+  })
+  waypointShown = false
+
+  @SwitchProperty({
+    name: "Auto Waypoint Pickup",
+    description: "If Waypoints detected in chat should be shown automatically (Only works if Waypoint shown is enabled)
+  })
+
   constructor() {
     this.initialize(this);
   }

@@ -18,8 +18,9 @@ let lists = FileUtils.getLists();
 let waypoints = [];
 
 register("renderWorld", () => {
+  if(!Settings.waypointShown) return
   waypoints.forEach((waypoint) => {
-    Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.5, true);
+    Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.7, true);
   })
 });
 
@@ -39,7 +40,13 @@ register("chat", (message, event) => {
     ChatLib.command(`pc Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
   }
 
-  //when coordinates are detected in chat offer a menu to click if you want to set a marker at those coords for 2 minutes [Yes / No] and then have a simple display there showing the coords
+  //Waypoints
+  if(Settings.autoPickupWaypoints) {
+    //Example msg: Vanquisher spawning at: X: -578.39 Y: 12.06 Z: -357.65
+    //if it detects the coords then waypoints.push({x, y, z}) ya know how it works
+    
+  }
+  
 }).setCriteria("${message}");
 
 register("step", () => {
@@ -149,12 +156,15 @@ register("command", (...args) => {
     }
     
     if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
+    let x = args[1].trim().replaceAll(",", ".")
+    let y = args[2].trim().replaceAll(",", ".")
+    let z = args[3].trim().replaceAll(",", ".")
     waypoints.push({
-      x: args2[1].trim(),
-      y: args2[2].trim(),
-      z: args2[3].trim(),
+      x: x,
+      y: y,
+      z: z,
     });
-    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}`);
+    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${x}, Y: ${y}, Z: ${z}`);
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
