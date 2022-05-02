@@ -143,7 +143,7 @@ register("command", (...args) => {
 
   //Waypoint
   if ("waypoint".includes(args[0])) {
-    if (!args2[0] || !args2[1] || !args2[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
+    if (!args2[0] || !args2[1] || !args2[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage, ${args2.join(",")}`);
     waypoints.push({
       x: args2[0].trim(),
       y: args2[1].trim(),
