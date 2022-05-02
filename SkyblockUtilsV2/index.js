@@ -19,6 +19,7 @@ let waypoints = [];
 
 register("renderWorld", () => {
   for (const waypoint of waypoints) {
+    ChatLib.chat(`x: ${waypoint.x}, y: ${waypoint.y}, z: ${waypoint.z}`)
     Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.5, true);
   }
 });
@@ -143,13 +144,13 @@ register("command", (...args) => {
 
   //Waypoint
   if ("waypoint".includes(args[0])) {
-    if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage, ${args2.join(",")}. ${args2.length}`);
+    if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
     waypoints.push({
       x: args2[1].trim(),
       y: args2[2].trim(),
       z: args2[3].trim(),
     });
-    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}`);
+    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}`);
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
