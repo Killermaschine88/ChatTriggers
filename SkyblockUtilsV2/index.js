@@ -27,8 +27,9 @@ register("chat", (message, event) => {
 }).setCriteria("${message}");
 
 register("step", () => {
-  if (!Settigns.enabled) return;
+  if (!Settings.enabled) return;
   if (running) return;
+  return
   running = true;
   ChatLib.chat(`${Const.prefix} Started searching for Items.`);
   if (j % divider === 0) {
@@ -93,12 +94,10 @@ register("command", (...args) => {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
   let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").split(" ");
-  console.log(args)
-  console.log(args2)
 
   if ("add".includes(args[1])) {
     try {
-      FileUtils.add(args, args[0]);
+      FileUtils.add(args2, args[0]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
@@ -107,7 +106,7 @@ register("command", (...args) => {
   }
   if ("remove".includes(args[1])) {
     try {
-      FileUtils.remove(args, args[0]);
+      FileUtils.remove(args2, args[0]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
