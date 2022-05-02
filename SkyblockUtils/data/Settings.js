@@ -39,7 +39,7 @@ class Settings {
     description: "Enable/Disable Filter out certain Phrases or Words from a list you make using /su word-list add myWord",
     category: "Filter",
   })
-  phrases = [];
+  phrases_filter = [];
 
   //QOL
   @SwitchProperty({
@@ -48,8 +48,6 @@ class Settings {
     category: "QOL",
   })
   vanquisherMessage = false
-  //World.getAllEntitiesOfType(Java.type("net.minecraft.entity.boss.EntityWither"))
-  //to get array of all withers
 
   constructor() {
     this.initialize(this);

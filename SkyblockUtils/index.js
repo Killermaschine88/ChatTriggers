@@ -14,12 +14,17 @@ let running = false;
 let color = true;
 let divider = 5;
 
-const blacklist = ["Your Implosion", "There are blocks"];
 
 //Implosion Hider
 register("chat", (message, event) => {
-  if (blacklist.some((word) => message.includes(word))) {
+  //Filter Unwanted Phrases Filter
+  if (Settings.phrases_filter.some((word) => message.includes(word))) {
     cancel(event);
+  }
+
+  //Vanquisher Message
+  if(Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
+    ChatLib.say(`/pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`)
   }
 }).setCriteria("${message}");
 
@@ -53,7 +58,7 @@ register("step", () => {
   running = false;
 }).setDelay(20);
 
-register("command", () => {
+/*register("command", () => {
   if (started) {
     return ChatLib.chat(`${Const.prefix} Module already started.`);
   }
@@ -76,7 +81,7 @@ register("command", (arg1) => {
     divider = Number(arg1);
     ChatLib.chat(`${Const.prefix} Succcessfully changed to ${arg1}`);
   }
-}).setName("ahdivider");
+}).setName("ahdivider");*/
 
 //DEBUG
 
