@@ -6,7 +6,6 @@ import * as Const from "./utils/constants";
 
 import * as FileUtils from "./utils/fileUtils";
 
-let started = false;
 let i = 0;
 let j = 0;
 let sent = [];
@@ -18,18 +17,18 @@ let divider = 5;
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
-  if (Settings.phrases_filter.some((word) => message.includes(word))) {
+  if (Settings.phrase_filter && [].some((word) => message.includes(word))) {
     cancel(event);
   }
 
   //Vanquisher Message
   if(Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.say(`/pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`)
+    ChatLib.command(`pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`)
   }
 }).setCriteria("${message}");
 
 register("step", () => {
-  if (!started) return;
+  if (!Settigns.enabled) return;
   if (running) return;
   running = true;
   ChatLib.chat(`${Const.prefix} Started searching for Items.`);
@@ -52,36 +51,10 @@ register("step", () => {
     });
     ChatLib.chat(`${Const.prefix} Finished searching Items and sent them.`);
   } catch (e) {
-    started = false;
-    ChatLib.chat(`${Const.prefix} Error occured, stopped Module.`);
+    ChatLib.chat(`${Const.prefix} Error occured`);
   }
   running = false;
 }).setDelay(20);
-
-/*register("command", () => {
-  if (started) {
-    return ChatLib.chat(`${Const.prefix} Module already started.`);
-  }
-  started = true;
-  ChatLib.chat(`${Const.prefix} Started AH Bot.`);
-}).setName("ahstart");
-
-register("command", () => {
-  if (!started) {
-    return ChatLib.chat(`${Const.prefix} Module not started yet.`);
-  }
-  started = false;
-  ChatLib.chat(`${Const.prefix} Stopped AH Bot.`);
-}).setName("ahstop");
-
-register("command", (arg1) => {
-  if (isNaN(Number(arg1))) {
-    ChatLib.chat(`${Const.prefix} ${arg1} isnt a valid number.`);
-  } else {
-    divider = Number(arg1);
-    ChatLib.chat(`${Const.prefix} Succcessfully changed to ${arg1}`);
-  }
-}).setName("ahdivider");*/
 
 //DEBUG
 
@@ -93,7 +66,7 @@ const testObject = {
 };
 
 function sendTestMessage(testObject) {
-  //if (!started) return;
+  //if (!Settings.enabled) return;
   let colorcode = "a";
   let price = testObject.price.replace(/,/g, "");
   if (price > 20000000 && color) {
@@ -119,7 +92,7 @@ register("command", (...args) => {
   }
   if ("add".includes(args[0])) {
     try {
-      FileUtils.add(args);
+      FileUtils.add(args, args[1]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
@@ -128,7 +101,7 @@ register("command", (...args) => {
   }
   if ("remove".includes(args[0])) {
     try {
-      FileUtils.remove(args);
+      FileUtils.remove(args, args[1]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
@@ -149,10 +122,10 @@ register("command", (...args) => {
   .setName("su");
 
 function sendMessage(item) {
-  if (!started) return;
+  if (!Settings.enabled) return;
   let colorcode = "a";
   let price = item.price.replace(/,/g, "");
-  if (price > 20000000 && color) {
+  if (price > 20000000 && Settings.priceWarn) {
     colorcode = "c";
   }
   new Message(new TextComponent(`${Const.prefix} ${Const.rarities[item.rarity]}${item.name} §f- §${colorcode}${item.price} ${Const.suffix}`).setClick("run_command", `${item.command}`).setHover("show_text", `${item.name}`)).chat();

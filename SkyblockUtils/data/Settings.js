@@ -39,7 +39,7 @@ class Settings {
     description: "Enable/Disable Filter out certain Phrases or Words from a list you make using /su word-list add myWord",
     category: "Filter",
   })
-  phrases_filter = [];
+  phrases_filter = false;
 
   //QOL
   @SwitchProperty({
