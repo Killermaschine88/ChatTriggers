@@ -18,10 +18,10 @@ let lists = FileUtils.getLists();
 let waypoints = [];
 
 register("renderWorld", () => {
-  for (const waypoint of waypoints) {
+  waypoints.forEach((waypoint) => {
     ChatLib.chat(`x: ${waypoint.x}, y: ${waypoint.y}, z: ${waypoint.z}`)
     Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.5, true);
-  }
+  })
 });
 
 //Implosion Hider
@@ -150,7 +150,7 @@ register("command", (...args) => {
       y: args2[2].trim(),
       z: args2[3].trim(),
     });
-    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}`);
+    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[1].trim()}, Y: ${args2[2].trim()}, Z: ${args2[3].trim()}, ${waypoints.length} Waypoints atm`);
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
