@@ -109,7 +109,7 @@ register("command", (...args) => {
   if (!["flipper", "filter", "waypoint"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
-  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").replace("waypoint ", "").split(" ");
+  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").replace("waypoint", "").split(" ");
 
   if ("add".includes(args[1])) {
     try {
@@ -142,7 +142,7 @@ register("command", (...args) => {
   }
 
   //Waypoint
-  if ("waypoint".includes(args[1])) {
+  if ("waypoint".includes(args[0])) {
     if (!args2[0] || !args2[1] || !args[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
     waypoints.push({
       x: args2[0].trim(),
