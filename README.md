@@ -4,5 +4,5 @@ My ChatTriggers Module
 
 # Credit
 
-- Baltraz
-- Marvinschs
+- Baltraz [https://github.com/Killermaschine88]
+- Marvinschs [https://github.com/Cakend123]
