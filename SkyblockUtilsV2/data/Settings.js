@@ -34,6 +34,13 @@ class Settings {
   })
   maxPrice = "";
 
+  @TextProperty({
+    name: "API Key",
+    description: "API Key given out by Baltraz#4874 to access the Flipper (Only like 3 people get one so yea)",
+    category: "Flipper",
+  })
+  apiKey = "";
+
   //Nether
   @SwitchProperty({
     name: "Vanquisher Spawn Message",

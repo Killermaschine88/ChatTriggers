@@ -39,7 +39,7 @@ register("step", () => {
   }
   j++;
   try {
-    request("https://development.baltrazz.repl.co/shards").then((res) => {
+    request(`https://development.baltrazz.repl.co/shards?key=${Settings.apiKey}`).then((res) => {
       if (res.length > 0) {
         res = JSON.parse(res);
         res.forEach((item) => {
