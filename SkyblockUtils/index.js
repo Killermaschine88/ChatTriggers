@@ -84,6 +84,9 @@ register("command", (...args) => {
   if (args === undefined) {
     return Settings.openGUI();
   }
+  if(!["flipper", "filter"].includes(args[1])) {
+    return ChatLib.chat(`Invalid Usage.\nValid Usage: /su filter/flipper add/remove/list Word`)
+  }
   let args2 = [];
   if (args.length > 1) {
     args.forEach((arg) => {
