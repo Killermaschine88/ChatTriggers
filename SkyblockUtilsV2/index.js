@@ -12,24 +12,24 @@ let sent = [];
 let running = false;
 let color = true;
 let divider = 5;
-let lists = FileUtils.getLists(); 
+let lists = FileUtils.getLists();
 
 //Waypoints
-let waypoints = []
+let waypoints = [];
 
 register("renderWorld", () => {
-    for(const waypoint of waypoints){
-      Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xFFFFFF, true, 0.5, true)
-    }
-})
+  for (const waypoint of waypoints) {
+    Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.5, true);
+  }
+});
 
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
-    for(const word of lists.wordFilter) {
-      if(message.toLowerCase().includes(word.toLowerCase())) {
-        return cancel(event)
+    for (const word of lists.wordFilter) {
+      if (message.toLowerCase().includes(word.toLowerCase())) {
+        return cancel(event);
       }
     }
   }
@@ -106,7 +106,7 @@ register("command", (...args) => {
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
     return;
   }
-  if (!["flipper", "filter"].includes(args[0])) {
+  if (!["flipper", "filter", "waypoint"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
   let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").replace("waypoint ", "").split(" ");
@@ -142,12 +142,12 @@ register("command", (...args) => {
   }
 
   //Waypoint
-  if("waypoint".includes(args[1])) {
+  if ("waypoint".includes(args[1])) {
     waypoints.push({
       x: args2[0],
       y: args2[1],
-      z: args[2]
-    })
+      z: args[2],
+    });
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
