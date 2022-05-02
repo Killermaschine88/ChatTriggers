@@ -143,11 +143,13 @@ register("command", (...args) => {
 
   //Waypoint
   if ("waypoint".includes(args[1])) {
+    if (!args2[0] || !args2[1] || !args[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
     waypoints.push({
-      x: args2[0],
-      y: args2[1],
-      z: args[2],
+      x: args2[0].trim(),
+      y: args2[1].trim(),
+      z: args2[2].trim(),
     });
+    ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${args2[0].trim}, Y: ${args2[1].trim()}, Z: ${args2[2].trim()}`);
   }
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
