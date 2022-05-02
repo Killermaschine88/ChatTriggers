@@ -12,14 +12,23 @@ let sent = [];
 let running = false;
 let color = true;
 let divider = 5;
-let lists = FileUtils.getLists();
+let lists = FileUtils.getLists(); 
+
+//Waypoints
+let waypoints = []
+
+register("renderWorld", () => {
+    for(const waypoint of waypoints){
+      Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xFFFFFF, true, 0.5, true)
+    }
+})
 
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
     for(const word of lists.wordFilter) {
-      if(message.includes(word)) {
+      if(message.toLowerCase().includes(word.toLowerCase())) {
         return cancel(event)
       }
     }
@@ -100,7 +109,7 @@ register("command", (...args) => {
   if (!["flipper", "filter"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
-  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").split(" ");
+  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").replace("waypoint ", "").split(" ");
 
   if ("add".includes(args[1])) {
     try {
@@ -131,8 +140,17 @@ register("command", (...args) => {
       console.log(`Command: "list"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
   }
+
+  //Waypoint
+  if("waypoint".includes(args[1])) {
+    waypoints.push({
+      x: args2[0],
+      y: args2[1],
+      z: args[2]
+    })
+  }
 })
-  .setTabCompletions("add", "remove", "list", "help")
+  .setTabCompletions("add", "remove", "list", "help", "waypoint")
   .setName("su");
 
 function sendMessage(item) {
