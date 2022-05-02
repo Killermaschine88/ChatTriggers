@@ -1,7 +1,7 @@
 {
-  "name": "AhSniper",
+  "name": "SkyblockUtils",
   "creator": "Baltraz",
-  "description": "AH Sniper",
+  "description": "Skyblock Utility Module",
   "entry": "index.js",
   "requires": ["RequestV2", "Vigilance"]
 }
