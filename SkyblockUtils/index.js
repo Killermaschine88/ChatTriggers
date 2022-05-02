@@ -84,8 +84,14 @@ register("command", (...args) => {
   if (args === undefined) {
     return Settings.openGUI();
   }
-  if(!["flipper", "filter"].includes(args[1])) {
-    return ChatLib.chat(`Invalid Usage.\nValid Usage: /su filter/flipper add/remove/list Word`)
+  if(args[0] === "help") {
+    ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
+    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper add/remove/list Word\n/su filter add/remove/list Word\n\nA Word is only required when using add or remove.`)
+    ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
+    return
+  }
+  if(!["flipper", "filter"].includes(args[0])) {
+    return ChatLib.chat(`Invalid Usage.\nRefer to /su help`)
   }
   let args2 = [];
   if (args.length > 1) {
@@ -93,27 +99,27 @@ register("command", (...args) => {
       args2[args.indexOf(arg)] = arg;
     });
   }
-  if ("add".includes(args[0])) {
+  if ("add".includes(args[1])) {
     try {
-      FileUtils.add(args, args[1]);
+      FileUtils.add(args, args[0]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "add"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
   }
-  if ("remove".includes(args[0])) {
+  if ("remove".includes(args[1])) {
     try {
-      FileUtils.remove(args, args[1]);
+      FileUtils.remove(args, args[0]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`Command: "remove"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
   }
-  if ("list".includes(args[0])) {
+  if ("list".includes(args[1])) {
     try {
-      FileUtils.list();
+      FileUtils.list(args[0]);
     } catch (e) {
       console.log(`${ChatLib.getChatBreak()}`);
       ChatLib.chat(`§4Uncaught Error occured during listing the list. Check the console for more Information`);
@@ -121,7 +127,7 @@ register("command", (...args) => {
     }
   }
 })
-  .setTabCompletions("add", "remove", "list")
+  .setTabCompletions("add", "remove", "list", "help")
   .setName("su");
 
 function sendMessage(item) {
