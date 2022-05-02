@@ -13,7 +13,6 @@ let running = false;
 let color = true;
 let divider = 5;
 
-
 //Implosion Hider
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
@@ -22,8 +21,8 @@ register("chat", (message, event) => {
   }
 
   //Vanquisher Message
-  if(Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.command(`pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`)
+  if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
+    ChatLib.command(`pc Spawned Vanquisher at: ${Player.getX()} ${Player.getY()} ${Player.getZ()}`);
   }
 }).setCriteria("${message}");
 
@@ -84,17 +83,17 @@ register("command", (...args) => {
   if (args === undefined) {
     return Settings.openGUI();
   }
-  if(args[0] === "help") {
+  if (args[0] === "help") {
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
-    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper add/remove/list Word\n/su filter add/remove/list Word\n\nA Word is only required when using add or remove.`)
+    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper add/remove/list Word\n/su filter add/remove/list Word\n\nA Word is only required when using add or remove.`);
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
-    return
+    return;
   }
-  if(!["flipper", "filter"].includes(args[0])) {
-    return ChatLib.chat(`Invalid Usage.\nRefer to /su help`)
+  if (!["flipper", "filter"].includes(args[0])) {
+    return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
-  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "")
-  }
+  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").split(" ");
+
   if ("add".includes(args[1])) {
     try {
       FileUtils.add(args, args[0]);

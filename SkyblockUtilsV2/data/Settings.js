@@ -48,7 +48,7 @@ class Settings {
     description: "Send a Message in Party Chat containing your location if a Vanquisher Spawns",
     category: "QOL",
   })
-  vanquisherMessage = false
+  vanquisherMessage = false;
 
   constructor() {
     this.initialize(this);

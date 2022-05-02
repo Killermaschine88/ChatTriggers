@@ -2,7 +2,7 @@ export const prefix = "[§eSkyblockUtilsV2§f]";
 
 export const suffix = "§l§f[§6CLICK ME§f]";
 
-export const moduleName = "SkyblockUtilsV2"
+export const moduleName = "SkyblockUtilsV2";
 
 export const rarities = {
   COMMON: "§7",
