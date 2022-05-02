@@ -93,6 +93,8 @@ register("command", (...args) => {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
   let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").split(" ");
+  console.log(args)
+  console.log(args2)
 
   if ("add".includes(args[1])) {
     try {
