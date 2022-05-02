@@ -93,11 +93,7 @@ register("command", (...args) => {
   if(!["flipper", "filter"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`)
   }
-  let args2 = [];
-  if (args.length > 1) {
-    args.forEach((arg) => {
-      args2[args.indexOf(arg)] = arg;
-    });
+  let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "")
   }
   if ("add".includes(args[1])) {
     try {
