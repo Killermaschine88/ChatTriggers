@@ -24,6 +24,8 @@ register("chat", (message, event) => {
   if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
     ChatLib.command(`pc Vanquisher spawning at: ${Player.getX().toFixed(2)} ${Player.getY().toFixed(2)} ${Player.getZ().toFixed(2)}`);
   }
+
+  //when coordinates are detected in chat offer a menu to click if you want to set a marker at those coords for 2 minutes [Yes / No] and then have a simple display there showing the coords
 }).setCriteria("${message}");
 
 register("step", () => {
