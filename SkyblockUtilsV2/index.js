@@ -106,9 +106,9 @@ register("command", (...args) => {
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
     return;
   }
-  if (!["flipper", "filter", "waypoint"].includes(args[0])) {
+  /*if (!["flipper", "filter", "waypoint"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
-  }
+  }*/
   let args2 = args.join(" ").replace("add", "").replace("remove", "").replace("list", "").replace("waypoint", "").split(" ");
 
   if ("add".includes(args[1])) {
