@@ -5,6 +5,7 @@ register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
     lists.wordFilter.forEach((word) => {
+      console.log(`msg: ${message}, word: ${word}`)
       if (message.toLowerCase().includes(word.toLowerCase())) {
         cancel(event);
       }
