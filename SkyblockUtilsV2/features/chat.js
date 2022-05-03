@@ -4,7 +4,7 @@ import * as Const from "../utils/constants";
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
-    console.log(`msg: ${message}, list: ${lists.toString()}`)
+    console.log(`msg: ${message}, list: ${lists.wordFilter.toString()}`)
     lists.wordFilter.forEach((word) => {
       if (message.toLowerCase().includes(word.toLowerCase())) {
         cancel(event);
