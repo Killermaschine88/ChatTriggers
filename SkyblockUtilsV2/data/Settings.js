@@ -70,7 +70,7 @@ class Settings {
     description: "If a Waypoint is detected in chat it will automatically be rendered (Only works if Waypoint shown is enabled)",
     category: "Waypoint"
   })
-  autoDetectWaypoint = false;
+  autoDetectWaypoints = false;
 
   constructor() {
     this.initialize(this);
