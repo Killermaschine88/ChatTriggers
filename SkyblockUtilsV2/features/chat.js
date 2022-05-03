@@ -1,4 +1,5 @@
 import Settings from "../data/Settings";
+import * as Const from "../utils/constants";
 
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
@@ -16,11 +17,12 @@ register("chat", (message, event) => {
   }
 
   //Auto Waypoint Pickup
-  if (Settings.autoPickupWaypoints) {
+  if (Settings.autoPickupWaypoints && !message.includes("!")) {
     const matches = message.match(/X: (-?\d*\.\d*) Y: (-?\d*\.\d*) Z: (-?\d*\.\d*)/);
     let x = matches[1];
     let y = matches[2];
     let z = matches[3];
     waypoints.push({ x: x, y: y, z: z });
+    ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}!`)
   }
 }).setCriteria("${message}");

@@ -1,16 +1,13 @@
 import Settings from "./data/Settings";
-
 import * as Const from "./utils/constants";
-
 import * as FileUtils from "./utils/fileUtils";
-
-import debug from "./features/Debug";
+import debug from "./utils/Debug";
 
 let lists = FileUtils.getLists();
 
 //new command System
 //TODO: Port old commands to Settings and implement them in code
-register("command", (...args) => {
+/*register("command", (...args) => {
   if (args === undefined) {
     return Settings.openGUI();
   }
@@ -77,3 +74,9 @@ register("command", (...args) => {
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
   .setName("su");
+*/
+
+import "features/chat"
+import "features/commandHandler"
+import "features/flipper"
+import "features/renderWaypoints"
