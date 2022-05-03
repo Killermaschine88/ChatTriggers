@@ -3,7 +3,7 @@ import * as Const from "../utils/constants";
 import * as FileUtils from "../utils/fileUtils";
 import debug from "../utils/Debug";
 
-let lists = FileUtils.getLists();
+global.lists = FileUtils.getLists();
 
 //new command System
 //TODO: Port old commands to Settings and implement them in code
@@ -62,10 +62,10 @@ register("command", (...args) => {
 
     console.log(`"${args2.join(",")}"`)
 
-    if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage, refer to /su help`);
-    let x = args[1].trim().replaceAll(",", ".");
-    let y = args[2].trim().replaceAll(",", ".");
-    let z = args[3].trim().replaceAll(",", ".");
+    if (!args2[0] || !args2[1] || !args2[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage, refer to /su help`);
+    let x = args[0].trim().replaceAll(",", ".");
+    let y = args[1].trim().replaceAll(",", ".");
+    let z = args[2].trim().replaceAll(",", ".");
     waypoints.push({
       x: x,
       y: y,
