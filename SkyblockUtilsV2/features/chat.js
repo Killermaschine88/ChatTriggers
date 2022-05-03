@@ -4,8 +4,7 @@ import * as Const from "../utils/constants";
 register("chat", (message, event) => {
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
-    console.log(`msg: ${message}, list: ${lists.wordFilter.toString()}`)
-    lists.wordFilter.forEach((word) => {
+    JSON.parse(FileLib.read(Const.moduleName, `constants/filter.json`)).forEach((word) => {
       if (message.toLowerCase().includes(word.toLowerCase())) {
         cancel(event);
       }
@@ -18,12 +17,13 @@ register("chat", (message, event) => {
   }
 
   //Auto Waypoint Pickup
+  console.log(Settings.autoDetectWaypoints, message.includes("!"));
   if (Settings.autoDetectWaypoints && message.includes("!")) {
     const matches = message.match(/X: (-?\d*\.\d*) Y: (-?\d*\.\d*) Z: (-?\d*\.\d*)/);
     let x = matches[1];
     let y = matches[2];
     let z = matches[3];
     waypoints.push({ x: x, y: y, z: z });
-    ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}`)
+    ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}`);
   }
 }).setCriteria("${message}");

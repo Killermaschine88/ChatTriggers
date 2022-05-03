@@ -36,7 +36,7 @@ export function add(newItem, file) {
   if (isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Already exists in the list`);
   list.push(newItem);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
-  lists = getLists()
+  lists = getLists();
 }
 
 export function remove(newItem, file) {
@@ -56,7 +56,7 @@ export function remove(newItem, file) {
   const item = list.find((entry) => entry === newItem);
   list = list.splice(item, 1);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
-  lists = getLists()
+  lists = getLists();
 }
 
 export function getLists() {
@@ -65,5 +65,3 @@ export function getLists() {
     wordFilter: JSON.parse(FileLib.read(Const.moduleName, `constants/filter.json`)) || [],
   };
 }
-
-//TODO: Make the remove function and make it work for command also check if Item is even in list!
