@@ -1,7 +1,7 @@
-import Settings from "./data/Settings";
-import * as Const from "./utils/constants";
-import * as FileUtils from "./utils/fileUtils";
-import debug from "./utils/Debug";
+import Settings from "../data/Settings";
+import * as Const from "../utils/constants";
+import * as FileUtils from "../utils/fileUtils";
+import debug from "../utils/Debug";
 
 let lists = FileUtils.getLists();
 
