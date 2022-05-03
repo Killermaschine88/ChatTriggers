@@ -33,7 +33,6 @@ register("command", (...args) => {
       ChatLib.chat(`§4Uncaught Error occured during adding §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`${ChatLib.getChatBreak()}\nCommand: "add"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
-    lists = FileUtils.getLists();
   }
   if ("remove".includes(args[1])) {
     try {
@@ -42,7 +41,6 @@ register("command", (...args) => {
       ChatLib.chat(`§4Uncaught Error occured during removing §b${args[1]} §4to the list. Check the console for more Information`);
       console.log(`${ChatLib.getChatBreak()}\nCommand: "remove"\nError: "${e.name}"\nMessage: "${e.message}"\nFileName: "${e.fileName}"\nLineNumber: "${e.lineNumber}"`);
     }
-    lists = FileUtils.getLists();
   }
   if ("list".includes(args[1])) {
     try {
@@ -59,8 +57,6 @@ register("command", (...args) => {
       waypoints = [];
       return ChatLib.chat(`${Const.prefix} Cleared Waypoints`);
     }
-
-    console.log(`"${args2.join(",")}"`)
 
     if (!args2[0] || !args2[1] || !args2[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage, refer to /su help`);
     let x = args2[0].trim().replaceAll(",", ".");
