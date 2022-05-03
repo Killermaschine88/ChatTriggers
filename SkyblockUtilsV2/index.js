@@ -8,38 +8,6 @@ import debug from "./features/Debug";
 
 let lists = FileUtils.getLists();
 
-//Waypoints
-let waypoints = [];
-
-register("renderWorld", () => {
-  if(!Settings.waypointShown) return
-  waypoints.forEach((waypoint) => {
-    Tessellator.drawString("Vanquisher", waypoint.x, waypoint.y, waypoint.z, 0xffffff, true, 0.7, true);
-  })
-});
-  //Vanquisher Message
-  if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.command(`pc Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
-  }
-
-  //Waypoints
-  if(Settings.autoPickupWaypoints) {
-    //Example msg: Vanquisher spawning at: X: -578.39 Y: 12.06 Z: -357.65
-    //if it detects the coords then waypoints.push({x, y, z}) ya know how it works
-    
-  }
-
-register("chat", (message, event) => {
-  //Filter Unwanted Phrases Filter
-  if (Settings.phraseFilter) {
-    lists.wordFilter.forEach(word => {
-      if (message.toLowerCase().includes(word.toLowerCase())) {
-        cancel(event);
-      }
-    })
-  }
-}).setCriteria("${message}");
-
 //new command System
 //TODO: Port old commands to Settings and implement them in code
 register("command", (...args) => {
@@ -56,10 +24,10 @@ register("command", (...args) => {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
   let argss = args.join(" ").replace("add ", "").replace("remove ", "").replace("list ", "").replace("waypoint ", "").split(" ");
-  let args2 = []
+  let args2 = [];
   argss.forEach((entry) => {
-    args2.push(entry.trim())
-  })
+    args2.push(entry.trim());
+  });
 
   if ("add".includes(args[1])) {
     try {
@@ -90,15 +58,15 @@ register("command", (...args) => {
 
   //Waypoint
   if ("waypoint".includes(args[0])) {
-    if("clear".includes(args[1])) {
-      waypoints = []
-      return ChatLib.chat(`${Const.prefix} Cleared Waypoints`)
+    if ("clear".includes(args[1])) {
+      waypoints = [];
+      return ChatLib.chat(`${Const.prefix} Cleared Waypoints`);
     }
-    
+
     if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
-    let x = args[1].trim().replaceAll(",", ".")
-    let y = args[2].trim().replaceAll(",", ".")
-    let z = args[3].trim().replaceAll(",", ".")
+    let x = args[1].trim().replaceAll(",", ".");
+    let y = args[2].trim().replaceAll(",", ".");
+    let z = args[3].trim().replaceAll(",", ".");
     waypoints.push({
       x: x,
       y: y,
@@ -109,5 +77,3 @@ register("command", (...args) => {
 })
   .setTabCompletions("add", "remove", "list", "help", "waypoint")
   .setName("su");
-
-
