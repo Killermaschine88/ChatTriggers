@@ -67,10 +67,10 @@ class Settings {
 
   @SwitchProperty({
     name: "Auto Waypoint Pickup",
-    description: "If Waypoints detected in chat should be shown automatically (Only works if Waypoint shown is enabled)",
+    description: "If a Waypoint is detected in chat it will automatically be rendered (Only works if Waypoint shown is enabled)",
     category: "Waypoint"
   })
-  autoWaypoint = false;
+  autoDetectWaypoint = false;
 
   constructor() {
     this.initialize(this);

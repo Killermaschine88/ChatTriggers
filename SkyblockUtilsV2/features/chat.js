@@ -18,7 +18,7 @@ register("chat", (message, event) => {
   }
 
   //Auto Waypoint Pickup
-  if (Settings.autoPickupWaypoints && !message.includes("!")) {
+  if (Settings.autoDetectWaypoints && !message.includes("!")) {
     const matches = message.match(/X: (-?\d*\.\d*) Y: (-?\d*\.\d*) Z: (-?\d*\.\d*)/);
     let x = matches[1];
     let y = matches[2];
