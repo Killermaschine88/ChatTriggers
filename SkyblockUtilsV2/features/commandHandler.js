@@ -63,9 +63,9 @@ register("command", (...args) => {
     console.log(`"${args2.join(",")}"`)
 
     if (!args2[0] || !args2[1] || !args2[2]) return ChatLib.chat(`${Const.prefix} Invalid Usage, refer to /su help`);
-    let x = args[0].trim().replaceAll(",", ".");
-    let y = args[1].trim().replaceAll(",", ".");
-    let z = args[2].trim().replaceAll(",", ".");
+    let x = args2[0].trim().replaceAll(",", ".");
+    let y = args2[1].trim().replaceAll(",", ".");
+    let z = args2[2].trim().replaceAll(",", ".");
     waypoints.push({
       x: x,
       y: y,
