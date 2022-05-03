@@ -53,8 +53,8 @@ export function remove(newItem, file) {
   newItem = newItem.toString().replace(/,/g, " ");
   newItemLow = newItem.toLowerCase();
   if (!isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Doesn't exists in the list`);
-  const item = list.find((entry) => entry === newItem);
-  list = list.splice(item, 1);
+  const item = list.findIndex((entry) => entry === newItem);
+  list.splice(item, 1);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
   lists = getLists();
 }
