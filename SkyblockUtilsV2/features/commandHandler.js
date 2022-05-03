@@ -60,7 +60,9 @@ register("command", (...args) => {
       return ChatLib.chat(`${Const.prefix} Cleared Waypoints`);
     }
 
-    if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage`);
+    console.log(`"${args2.join(",")}"`)
+
+    if (!args2[1] || !args2[2] || !args2[3]) return ChatLib.chat(`${Const.prefix} Invalid Usage, refer to /su help`);
     let x = args[1].trim().replaceAll(",", ".");
     let y = args[2].trim().replaceAll(",", ".");
     let z = args[3].trim().replaceAll(",", ".");
