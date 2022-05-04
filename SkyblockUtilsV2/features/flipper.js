@@ -1,12 +1,12 @@
 /*
 import request from "requestV2/index";
-
+import Settings from "../data/Settings";
 
 let j = 0;
 let sent = [];
 let running = false;
 let color = true;
-let divider = 5;
+let divider = 7;
 
 
 register("step", () => {

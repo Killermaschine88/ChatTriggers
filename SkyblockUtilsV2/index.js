@@ -1,4 +1,4 @@
-import "./features/chat";
-import "./features/commandHandler";
-import "./features/flipper";
-import "./features/renderWaypoints";
+import "./features/chat"; //All Chat related Things
+import "./features/commandHandler"; //Command Handler
+import "./features/flipper"; //AH Flipper
+import "./features/renderWorld"; //World related Stuff

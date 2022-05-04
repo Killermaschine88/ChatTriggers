@@ -21,14 +21,14 @@ class Settings {
   priceWarn = true;
 
   @TextProperty({
-    name: "Min price",
+    name: "Min price (Disabled)",
     description: "Items below that Value will not show up in chat (Format: 20000000)",
     category: "Flipper",
   })
   minPrice = "";
 
   @TextProperty({
-    name: "Max price",
+    name: "Max price (Disabled)",
     description: "Items above that Value will not show up in chat (Format: 20000000)",
     category: "Flipper",
   })
