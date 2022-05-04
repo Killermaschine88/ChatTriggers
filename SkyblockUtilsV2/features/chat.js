@@ -19,11 +19,14 @@ register("chat", (message, event) => {
   //Auto Waypoint Pickup
   if (Settings.autoDetectWaypoints && !message.includes("!")) {
     const matches = message.match(/X: (-?\d*\.?\d*?) Y: (-?\d*\.?\d*?) Z: (-?\d*\.?\d*?)/);
+
+    if (!matches[0] || matches[1] || matches[2] || matches[3]) return
+    
     let x = matches[1],
       y = matches[2],
       z = matches[3];
 
-    if (!x || !y || !z) return ChatLib.chat(`${Const.prefix} Something went wrong while extracting Coordinates from the the chat`);
+    if(!x || !y || !z) return
 
     waypoints.push({ x: x, y: y, z: z });
     ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}!`);

@@ -54,7 +54,7 @@ register("command", (...args) => {
   //Waypoint
   if ("waypoint".includes(args[0])) {
     if ("clear".includes(args[1])) {
-      waypoints = [];
+      global.waypoints = [];
       return ChatLib.chat(`${Const.prefix} Cleared Waypoints`);
     }
 
