@@ -5,43 +5,7 @@ import * as Const from "../utils/constants";
 
 @Vigilant(Const.moduleName, `§e${Const.moduleName}`)
 class Settings {
-  //Flipper
-  @SwitchProperty({
-    name: "Enable tracking",
-    description: "Start tracking Items and show notifications in your chat",
-    category: "Flipper",
-  })
-  enable = false;
-
-  @SwitchProperty({
-    name: "High price Warning",
-    description: "Prices above 20 million Coins will be marked §cRed",
-    category: "Flipper",
-  })
-  priceWarn = true;
-
-  @TextProperty({
-    name: "Min price (Disabled)",
-    description: "Items below that Value will not show up in chat (Format: 20000000)",
-    category: "Flipper",
-  })
-  minPrice = "";
-
-  @TextProperty({
-    name: "Max price (Disabled)",
-    description: "Items above that Value will not show up in chat (Format: 20000000)",
-    category: "Flipper",
-  })
-  maxPrice = "";
-
-  @TextProperty({
-    name: "API Key",
-    description: "API Key given out by Baltraz#4874 to access the Flipper (Only like 3 people get one so yea)",
-    category: "Flipper",
-    placeholder: "None"
-  })
-  apiKey = "";
-
+  
   //Nether
   @SwitchProperty({
     name: "Vanquisher Spawn Message",
@@ -62,8 +26,7 @@ class Settings {
     name: "Banner of Corruption Display Text",
     description: "The Text to Display when the Banner of Corruption has expired ('Banner' by default)",
     category: "Nether",
-    subcategory: "Corrupted Banner",
-    placeholder: "Banner"
+    subcategory: "Corrupted Banner"
   })
   bannerText = "Banner";
 
@@ -104,6 +67,43 @@ class Settings {
     category: "Filter"
   })
   phraseFilter = false;
+
+  //Flipper
+  @SwitchProperty({
+    name: "Enable tracking",
+    description: "Start tracking Items and show notifications in your chat",
+    category: "Flipper",
+  })
+  enable = false;
+
+  @SwitchProperty({
+    name: "High price Warning",
+    description: "Prices above 20 million Coins will be marked §cRed",
+    category: "Flipper",
+  })
+  priceWarn = true;
+
+  @TextProperty({
+    name: "Min price (Disabled)",
+    description: "Items below that Value will not show up in chat (Format: 20000000)",
+    category: "Flipper",
+  })
+  minPrice = "";
+
+  @TextProperty({
+    name: "Max price (Disabled)",
+    description: "Items above that Value will not show up in chat (Format: 20000000)",
+    category: "Flipper",
+  })
+  maxPrice = "";
+
+  @TextProperty({
+    name: "API Key",
+    description: "API Key given out by Baltraz#4874 to access the Flipper (Only like 3 people get one so yea)",
+    category: "Flipper",
+    placeholder: "None"
+  })
+  apiKey = "";
 
   constructor() {
     this.initialize(this);
