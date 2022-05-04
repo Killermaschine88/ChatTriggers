@@ -1,4 +1,4 @@
-import { @Vigilant, @SwitchProperty, @CheckboxProperty, @TextProperty } from "Vigilance";
+import { @Vigilant, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, Color } from "Vigilance";
 import * as Const from "../utils/constants";
 
 //Pretty simple for now no? Remember to ignore errors shown in editor
@@ -48,6 +48,30 @@ class Settings {
     category: "Nether"
   })
   vanquisherMessage = false;
+
+  @SwitchProperty({
+    name: "Banner of Corrupion Timer",
+    description: "Starts a Timer when you place a Banner and reminds you when the banner expires",
+    category: "Nether",
+    subcategory: "Banner"
+  })
+  bannerTimer = true;
+  
+  @TextProperty({
+    name: "Banner Display Text",
+    description: "The Text to Display when the Banner has expired ('Banner' by default)",
+    category: "Nether",
+    subcategory: "Banner"
+  })
+  bannerText = "Banner";
+
+  @ColorProperty({
+    name: "Banner Display Color",
+    description: "The Color of the Message",
+    category: "Nether",
+    subcategory: "Banner"
+  })
+  bannerColor = Color.RED;
 
   //Waypoints
   @SwitchProperty({
