@@ -16,12 +16,12 @@ class Settings {
 
   @SelectorProperty({
     name: "Vanquisher Message Chat",
-    description: "In which chat the Vanquisher Message should be sent when you spawn one",
+    description: "In which chat the Vanquisher Message should be sent when you spawn one (Vanquisher Spawn Message must be enabled for it to work)",
     category: "Nether",
     subcategory: "Vanquisher",
     options: ["All Chat (Use at own Risk)", "Party Chat"],
   })
-  vanquisherChat = 1;
+  vanquisherMessageChat = 1;
 
   @SwitchProperty({
     name: "Banner of Corruption Timer",
