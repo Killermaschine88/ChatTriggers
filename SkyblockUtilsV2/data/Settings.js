@@ -49,14 +49,6 @@ class Settings {
   })
   vanquisherMessage = false;
 
-  //Filter
-  @SwitchProperty({
-    name: "Phrase Filter",
-    description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su word-list add myWord",
-    category: "Filter"
-  })
-  phraseFilter = false;
-
   //Waypoints
   @SwitchProperty({
     name: "Waypoint shown",
@@ -71,6 +63,21 @@ class Settings {
     category: "Waypoint"
   })
   autoDetectWaypoints = false;
+
+  @SwitchProperty({
+    name: "Display Waypoint Distance",
+    description: "Displays how far away you are from a waypoint (Only works if Waypoint shown is enabled)",
+    category: "Waypoint"
+  })
+  displayWaypointDistance = false;
+
+  //Filter
+  @SwitchProperty({
+    name: "Phrase Filter",
+    description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su word-list add myWord",
+    category: "Filter"
+  })
+  phraseFilter = false;
 
   constructor() {
     this.initialize(this);
