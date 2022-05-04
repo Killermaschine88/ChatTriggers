@@ -17,7 +17,7 @@
 - **/su word-list remove myWord** - *Remove a keyword from the list* (Idk how to use either)
 
 
-## Attribute Flipper *Requires API key from Baltraz*
+## Attribute Flipper - *Requires API key from Baltraz*
 ### Sends auctions in chat with the attributes Life Regen Mana pool
 -----
 
