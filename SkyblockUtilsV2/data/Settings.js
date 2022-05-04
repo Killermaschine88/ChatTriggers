@@ -38,6 +38,7 @@ class Settings {
     name: "API Key",
     description: "API Key given out by Baltraz#4874 to access the Flipper (Only like 3 people get one so yea)",
     category: "Flipper",
+    placeholder: "None"
   })
   apiKey = "";
 
@@ -50,28 +51,29 @@ class Settings {
   vanquisherMessage = false;
 
   @SwitchProperty({
-    name: "Banner of Corrupion Timer",
+    name: "Banner of Corruption Timer",
     description: "Starts a Timer when you place a Banner and reminds you when the banner expires",
     category: "Nether",
-    subcategory: "Banner"
+    subcategory: "Corrupted Banner"
   })
   bannerTimer = true;
   
   @TextProperty({
-    name: "Banner Display Text",
-    description: "The Text to Display when the Banner has expired ('Banner' by default)",
+    name: "Banner of Corruption Display Text",
+    description: "The Text to Display when the Banner of Corruption has expired ('Banner' by default)",
     category: "Nether",
-    subcategory: "Banner"
+    subcategory: "Corrupted Banner",
+    placeholder: "Banner"
   })
   bannerText = "Banner";
 
   @ColorProperty({
-    name: "Banner Display Color",
-    description: "The Color of the Message",
+    name: "Banner of Corruption Display Color",
+    description: "The Color of the Banner Reminder Message",
     category: "Nether",
-    subcategory: "Banner"
+    subcategory: "Corrupted Banner"
   })
-  bannerColor = Color.RED;
+  bannerColor = Color.MAGENTA;
 
   //Waypoints
   @SwitchProperty({
