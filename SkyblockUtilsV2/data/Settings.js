@@ -1,4 +1,4 @@
-import { @Vigilant, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, Color } from "Vigilance";
+import { @Vigilant, @SelectorProperty, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, Color } from "Vigilance";
 import * as Const from "../utils/constants";
 
 //Pretty simple for now no? Remember to ignore errors shown in editor
