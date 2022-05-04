@@ -8,8 +8,8 @@ class Settings {
   //Formatting
   @SwitchProperty({
     name: "Setting Formatting (This Setting doesnt do anything)",
-    description: "a",
-    category: "My Description (Default Value) [Setting which has to be enabled for this feature to work]",
+    description: "My Description (Default Value) [Setting which has to be enabled for this feature to work]",
+    category: "Example",
   })
   formatting=false;
   
