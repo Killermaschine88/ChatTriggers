@@ -13,7 +13,7 @@ register("chat", (message, event) => {
 
   //Vanquisher Message
   if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
-    ChatLib.command(`${Settings.vanquisherChat === "Party Chat" ? "pc" : "ac"} Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
+    ChatLib.command(`${Settings.vanquisherMessageChat === "Party Chat" ? "pc" : "ac"} Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
   }
 
   //Auto Waypoint Pickup
