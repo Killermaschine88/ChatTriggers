@@ -80,7 +80,7 @@ class Settings {
   //Filter
   @SwitchProperty({
     name: "Phrase Filter",
-    description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su word-list add myWord (None) []",
+    description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su filter add myWord (None) []",
     category: "Filter",
   })
   phraseFilter = false;
