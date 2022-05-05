@@ -36,6 +36,7 @@ export function add(newItem, file) {
   if (isIn(list, newItemLow)) return ChatLib.chat(`§4Error: §f"§b${newItem}§f" §4Already exists in the list`);
   list.push(newItem);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
+  ChatLib.chat(`${Const.prefix} §6Successfully added §f"${newItem}" §6to the ${file} list`);
   lists = getLists();
 }
 
@@ -56,6 +57,7 @@ export function remove(newItem, file) {
   const item = list.findIndex((entry) => entry === newItem);
   list.splice(item, 1);
   FileLib.write(Const.moduleName, `constants/${file}.json`, JSON.stringify(list, null, "\t"));
+  ChatLib.chat(`${Const.prefix} §6Successfully removed §f"${newItem}" §6from the ${file} list`);
   lists = getLists();
 }
 

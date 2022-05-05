@@ -95,24 +95,10 @@ class Settings {
 
   @SwitchProperty({
     name: "High price Warning",
-    description: "Prices above 20 million Coins will be marked §cRed (Enabled) [Auction tracking]",
+    description: "Prices above 20 million Coins will be marked §cRed §r(Enabled) [Auction tracking]",
     category: "Flipper",
   })
   priceWarn = true;
-
-  @TextProperty({
-    name: "Min price (Disabled)",
-    description: "Items below that Value will not show up in chat, Format: 20000000 (None) [Auction tracking]",
-    category: "Flipper",
-  })
-  minPrice = "";
-
-  @TextProperty({
-    name: "Max price (Disabled)",
-    description: "Items above that Value will not show up in chat, Format: 20000000 (None) [Auction tracking]",
-    category: "Flipper",
-  })
-  maxPrice = "";
 
   @TextProperty({
     name: "API Key",

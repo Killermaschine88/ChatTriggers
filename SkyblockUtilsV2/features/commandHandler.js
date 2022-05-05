@@ -1,7 +1,6 @@
 import Settings from "../data/Settings";
 import * as Const from "../utils/constants";
 import * as FileUtils from "../utils/fileUtils";
-import debug from "../utils/Debug";
 
 global.lists = FileUtils.getLists();
 
@@ -13,11 +12,11 @@ register("command", (...args) => {
   }
   if (args[0] === "help") {
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
-    ChatLib.chat(`${Const.prefix} Help Menu\n/su flipper <add:remove:list> [Item]\n/su filter <add:remove:list> [Message]\n/su waypoint clear\n/su waypoint <X> <Y> <Z>\n\nA Word is only required when using add or remove.`);
+    ChatLib.chat(`${Const.prefix} Help Menu\n/su filter <add:remove:list> [Message]\n/su waypoint clear\n/su waypoint <X> <Y> <Z>\n\nA Message is only required when using add or remove.`);
     ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r`);
     return;
   }
-  if (!["flipper", "filter", "waypoint"].includes(args[0])) {
+  if (!["filter", "waypoint"].includes(args[0])) {
     return ChatLib.chat(`Invalid Usage.\nRefer to /su help`);
   }
   let argss = args.join(" ").replace("add ", "").replace("remove ", "").replace("list ", "").replace("waypoint ", "").split(" ");
@@ -70,5 +69,5 @@ register("command", (...args) => {
     ChatLib.chat(`${Const.prefix} Added Waypoint at X: ${x}, Y: ${y}, Z: ${z}`);
   }
 })
-  .setTabCompletions("add", "remove", "list", "help", "waypoint")
+  .setTabCompletions("help", "add", "remove", "list", "waypoint")
   .setName("su");
