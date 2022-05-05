@@ -29,7 +29,7 @@ register("playerInteract", (action) => {
     let holding = player.func_70694_bm();
     if (holding === null) return;
     item = holding.func_82833_r();
-    if (item === "Totem of Corruption") {
+    if (item === "§aTotem of Corruption") {
       running = true;
     }
   }
