@@ -9,12 +9,12 @@ register("chat", (message, event) => {
         cancel(event);
       }
     });
-  }
+  };
 
   //Vanquisher Message
   if (Settings.vanquisherMessage && message.includes("A Vanquisher is spawning")) {
     ChatLib.command(`${Settings.vanquisherMessageChat === "Party Chat" ? "pc" : "ac"} Vanquisher spawning at: X: ${Player.getX().toFixed(2)} Y: ${Player.getY().toFixed(2)} Z: ${Player.getZ().toFixed(2)}`);
-  }
+  };
 
   //Auto Waypoint Pickup
   if (Settings.autoDetectWaypoints && !message.includes("!")) {
@@ -30,5 +30,5 @@ register("chat", (message, event) => {
 
     waypoints.push({ x: x, y: y, z: z });
     ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}!`);
-  }
+  };
 }).setCriteria("${message}");
