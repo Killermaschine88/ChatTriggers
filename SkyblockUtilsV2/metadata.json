@@ -3,5 +3,5 @@
   "creator": "Baltraz",
   "description": "Skyblock Utility Module",
   "entry": "index.js",
-  "requires": ["RequestV2", "Vigilance"]
+  "requires": ["Vigilance"]
 }
