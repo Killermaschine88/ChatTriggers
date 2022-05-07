@@ -1,13 +1,19 @@
-import { @Vigilant, @SelectorProperty, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, Color } from "Vigilance";
+import { @Vigilant, @SelectorProperty, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, @DecimalSliderProperty,Color } from "Vigilance";
 import * as Const from "../utils/constants";
 
 //Pretty simple for now no? Remember to ignore errors shown in editor
 
 @Vigilant(`${Const.moduleName}`, `§e${Const.moduleName}`, {
   getCategoryComparator: () => (a, b) => {
-      const categories = ["Nether", "Waypoint", "Filter"];
+      const categories = ["Nether", "Waypoint", "QOL"];
 
       return categories.indexOf(a.name) - categories.indexOf(b.name);
+  },
+  getSubcategoryComparator: () => (a, b) => {
+    const subcategories = ["Filter", "Damage Splash"];
+
+    return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
+        subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
   },
 })
 class Settings {
@@ -83,16 +89,47 @@ class Settings {
   @SwitchProperty({
     name: "Phrase Filter",
     description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su filter add [Words].\nMultiple word lines can be included just use spaces between each word",
-    category: "Filter",
+    category: "QOL",
+    subcategory: "Filter"
   })
   phraseFilter = false;
+
+  //Damage Splash
+  @SwitchProperty({
+    name: "Custom Damage Splash",
+    description: "Displays a custom Damage Splash. If this is Disabled the module will not modify the Damage Splash.\nDefaults to §cDisabled§r.",
+    category: "QOL",
+    subcategory: "Damage Splash"
+  })
+  customDamageSplash = false;
+
+  @SelectorProperty({
+    name: "Custom Damage Type",
+    description: "What the Custom Damage Splash scale should be.\nDefaults to §cHidden§r.",
+    category: "QOL",
+    subcategory: "Damage Splash",
+    options: Const.customDamageTypes,
+  })
+  customDamageType = 0;
+
+  @DecimalSliderProperty({
+    name: "Custom Damage Scale",
+    description: "Sets the custom scale of the Damage Splash.\nDefaults to 0.3 (Basically hypixel)",
+    category: "QOL",
+    subcategory: "Damage Splash",
+    minF: 0.1,
+    maxF: 1,
+  })
+  cunstomDamageScale = 0.3;
 
   constructor() {
     this.initialize(this);
     this.addDependency("Display Waypoint Distance", "Waypoint shown");
     this.addDependency("Banner of Corruption Display Color", "Banner of Corruption Timer");
     this.addDependency("Banner of Corruption Display Text", "Banner of Corruption Timer");
-    this.addDependency("Vanquisher Message Chat", "Vanquisher Spawn Message")
+    this.addDependency("Vanquisher Message Chat", "Vanquisher Spawn Message");
+    this.addDependency("Custom Damage Type", "Custom Damage Splash");
+    this.addDependency("Custom Damage Scale", "Custom Damage Splash");
   }
 }
 
