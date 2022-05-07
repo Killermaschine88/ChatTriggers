@@ -12,3 +12,5 @@ export const rarities = {
   LEGENDARY: "§6",
   MYTHIC: "§d",
 };
+
+export const customDamageTypes = ["Hidden", "Big", "Medium", "Small", "Custom"]
