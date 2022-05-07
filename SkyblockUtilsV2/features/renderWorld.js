@@ -12,21 +12,4 @@ register("renderWorld", () => {
       }
     });
   }
-
-  if (Settings.customDamageSplash) {
-    if (global.damageText.length === 0) return;
-    if(Settings.customDamageType === "Hidden") return
-    global.damageText.forEach((dmg) => {
-      Tessellator.drawString(`${dmg.name}`, dmg.x, dmg.y, dmg.z, 0xffffff, true, getDmgScale(Settings.customDamageType), false);
-    });
-  }
 });
-
-function getDmgScale(type) {
-  if(type === "Big") return 0.05
-  if(type === "Normal") return 0.03
-  if(type === "Small") return 0.01
-  if(type === "Custom") {
-    return (Settings.customDamageScale / 1666).toFixed(2)
-  }
-}
