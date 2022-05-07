@@ -3,7 +3,7 @@ import * as Const from "./constants";
 export function list(file) {
   let list = JSON.parse(FileLib.read(Const.moduleName, `constants/${file}.json`));
   if (list == null) return ChatLib.chat("§4Error: The File to save the items in doesn't exist!");
-  list.length == 0 ? empty = " No phrases" : empty = "";
+  list.length == 0 ? (empty = " No phrases") : (empty = "");
   ChatLib.chat(`&9&m${ChatLib.getChatBreak()}§r\n§CThe List Contains:${empty}`);
   list.forEach((item) => {
     ChatLib.chat(`- §6${item}`);

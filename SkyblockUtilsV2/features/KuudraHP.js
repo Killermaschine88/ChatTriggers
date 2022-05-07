@@ -1,11 +1,9 @@
-
-
 const Mc = Client.getMinecraft();
-const wither = Java.type("net.minecraft.entity.boss.EntityWither")
+const wither = Java.type("net.minecraft.entity.boss.EntityWither");
 
 let kuudra;
 register("Step", () => {
-    World.getAllEntitiesOfType(wither).forEach(entity =>{
-        kuudra = entity;
-    })
-}).setDelay(1)
+  World.getAllEntitiesOfType(wither).forEach((entity) => {
+    kuudra = entity;
+  });
+}).setDelay(1);

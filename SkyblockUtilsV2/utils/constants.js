@@ -13,4 +13,4 @@ export const rarities = {
   MYTHIC: "§d",
 };
 
-export const customDamageTypes = ["Hidden", "Big", "Medium", "Small", "Custom"]
+export const customDamageTypes = ["Hidden", "Big", "Normal", "Small", "Custom"];

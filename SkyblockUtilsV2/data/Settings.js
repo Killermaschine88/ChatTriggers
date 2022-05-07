@@ -105,22 +105,22 @@ class Settings {
 
   @SelectorProperty({
     name: "Custom Damage Type",
-    description: "What the Custom Damage Splash scale should be.\nDefaults to §cHidden§r.",
+    description: "What the Custom Damage Splash scale should be.\nDefaults to §cNormal§r.",
     category: "QOL",
     subcategory: "Damage Splash",
     options: Const.customDamageTypes,
   })
-  customDamageType = 0;
+  customDamageType = 2;
 
   @DecimalSliderProperty({
     name: "Custom Damage Scale",
-    description: "Sets the custom scale of the Damage Splash.\nDefaults to 0.3 (Basically hypixel)",
+    description: "Sets the custom scale of the Damage Splash.\nDefaults to 50 (Basically hypixel)",
     category: "QOL",
     subcategory: "Damage Splash",
-    minF: 0.1,
-    maxF: 1,
+    minF: 1,
+    maxF: 100,
   })
-  cunstomDamageScale = 0.3;
+  customDamageScale = 50;
 
   constructor() {
     this.initialize(this);
