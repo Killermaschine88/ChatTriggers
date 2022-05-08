@@ -10,6 +10,7 @@ register("renderEntity", (entity, pos, idk, event) => {
     if (Settings.customDamageType === "Hidden") return;
     if (damageText.find((dmg) => dmg.name === entity.name && dmg.x === entity.x && dmg.y === entity.y && dmg.z === entity.z)) return;
     if (Math.floor(MathUtils.getDistanceToPlayer({ x: entity.x, y: entity.y, z: entity.z })) > 7) return; // ignore if more than 7 blocks away
+    if(damageText.length >= 10) return
     damageText.push({ name: entity.name, x: entity.x, y: entity.y, z: entity.z });
   }
 });
