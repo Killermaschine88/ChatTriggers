@@ -1,7 +1,9 @@
 const EntityArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand");
 
 register("renderEntity", (entity, pos, idk, event) => {
+  if(!Settings.kuudraHealthDisplay)
   if (!entity instanceof EntityArmorStand) return;
+  if(!Scoreboard.getLines().find((e) => e.name.includes("Kuudra"))) return
 
   /*//Kuudra
   if (entity.name === "§c§lKuudra") {

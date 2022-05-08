@@ -60,6 +60,14 @@ class Settings {
   })
   bannerColor = Color.MAGENTA;
 
+    @SwitchProperty({
+    name: "Kuudra Health Display",
+    description: "Displays the Health of the Kuudra Tentacles above them.\nDefaults to §cDisabled§r.",
+    category: "Nether",
+    subcategory: "Kuudra",
+  })
+  kuudraHealthDisplay = false;
+
   //Waypoints
   @SwitchProperty({
     name: "Waypoint shown",
