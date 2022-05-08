@@ -7,7 +7,7 @@ let damageText = [];
 
 register("renderEntity", (entity, pos, idk, event) => {
   if (Settings.hideArmorStands) {
-    if (entity instanceof EntityArmorStand) {
+    if (entity.name.includes("§8[")) {
       cancel(event);
     }
   }
