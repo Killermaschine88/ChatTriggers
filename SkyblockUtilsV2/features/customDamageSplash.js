@@ -20,6 +20,7 @@ register("renderWorld", () => {
   if (damageText.length === 0 || damageText.length > 10) return;
   if (Settings.customDamageType === "Hidden") return;
   damageText.forEach((dmg) => {
+    console.log(dmg.name, dmg.x, dmg.y, dmg.z, getDamageScale(Settings.customDamageType))
     Tessellator.drawString(`${dmg.name}`, dmg.x, dmg.y, dmg.z, 0xffffff, true, getDmgScale(Settings.customDamageType), false);
   });
 });
