@@ -21,7 +21,6 @@ register("renderWorld", () => {
   if (damageText.length === 0 || damageText.length > 10) return;
   if (Const.customDamageTypes[Settings.customDamageType] === "Hidden") return;
   damageText.forEach((dmg) => {
-    console.log(dmg.name, dmg.x, dmg.y, dmg.z, getDamageScale(Const.customDamageTypes[Settings.customDamageType]));
     Tessellator.drawString(`${dmg.name}`, dmg.x, dmg.y, dmg.z, 0xffffff, true, getDamageScale(Const.customDamageTypes[Settings.customDamageType]), false);
   });
 });
@@ -32,8 +31,8 @@ register("step", () => {
 
 function getDamageScale(type) {
   if (type === "Big") return 0.05;
-  if (type === "Normal") return 0.03;
-  if (type === "Small") return 0.01;
+  if (type === "Normal") return 0.035;
+  if (type === "Small") return 0.02;
   if (type === "Custom") {
     return Number((Settings.customDamageScale / 1666).toFixed(2));
   }
