@@ -10,7 +10,7 @@ register("renderEntity", (entity, pos, idk, event) => {
     if (Settings.customDamageType === "Hidden") return;
     if (damageText.find((dmg) => dmg.name === entity.name && dmg.x === entity.x && dmg.y === entity.y && dmg.z === entity.z)) return;
     if (Math.floor(MathUtils.getDistanceToPlayer({ x: entity.x, y: entity.y, z: entity.z })) > 7) return; // ignore if more than 7 blocks away
-    if(damageText.length >= 10) return
+    if (damageText.length >= 10) return;
     damageText.push({ name: entity.name, x: entity.x, y: entity.y, z: entity.z });
   }
 });
@@ -20,7 +20,7 @@ register("renderWorld", () => {
   if (damageText.length === 0 || damageText.length > 10) return;
   if (Settings.customDamageType === "Hidden") return;
   damageText.forEach((dmg) => {
-    console.log(dmg.name, dmg.x, dmg.y, dmg.z, getDamageScale(Settings.customDamageType))
+    console.log(dmg.name, dmg.x, dmg.y, dmg.z, getDamageScale(Settings.customDamageType));
     Tessellator.drawString(`${dmg.name}`, dmg.x, dmg.y, dmg.z, 0xffffff, true, getDamageScale(Settings.customDamageType), false);
   });
 });
@@ -30,7 +30,6 @@ register("step", () => {
 }).setDelay(3);
 
 function getDamageScale(type) {
-  console.log(type)
   if (type === "Big") return 0.05;
   if (type === "Normal") return 0.03;
   if (type === "Small") return 0.01;

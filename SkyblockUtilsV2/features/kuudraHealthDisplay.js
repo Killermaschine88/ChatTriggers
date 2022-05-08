@@ -7,7 +7,7 @@ register("renderEntity", (entity, pos, idk, event) => {
   //add a check to only pass if location includes "Kuudra"
 
   //Name Check
-  if(!entity.name.includes("§cKuudra") || !entity.name.includes("§cTentacle Ida") || !entity.name.includes("§cTentacle King") || !entity.name.includes("§cTentacle Echo") || !entity.name.includes("§cTentacle Zulu")) return
+  if (!entity.name.includes("§cKuudra") || !entity.name.includes("§cTentacle Ida") || !entity.name.includes("§cTentacle King") || !entity.name.includes("§cTentacle Echo") || !entity.name.includes("§cTentacle Zulu")) return;
 
   //console.log(entity.toString())
   return;
