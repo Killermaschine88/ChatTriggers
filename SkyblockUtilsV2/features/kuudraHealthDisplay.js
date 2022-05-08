@@ -6,8 +6,36 @@ register("renderEntity", (entity, pos, idk, event) => {
 
 console.log(Scoreboard.getLines().forEach((line) => { console.log(line.toString())}))
 
-  if (entity.name !== "§c§lKuudra" || entity.name !== "§c§lTentacle Ida" || entity.name !== "§c§lTentacle King" || entity.name !== "§c§lTentacle Echo" || entity.name !== "§c§lTentacle Zulu") return;
-console.log(entity.toString())
-  return;
-  Tessellator.drawString(`${entity.name}`, entity.x, entity.y + 50, entity.z, 0xffffff, true, 0.75, false); //Rendering HP Display
+  //Kuudra
+  if(entity.name === "§c§lKuudra") {
+    const hp = Scoreboard.getLines().find(e => e.includes("§cKuudra"))
+    if(!hp) return
+    renderHealth(entity)
+  }
+
+  //Tentacles
+  if(entity.name === "§c§lTentacle Ida") {
+    const hp = Scoreboard.getLines().find(e => e.includes("§cTentacle Ida"))
+    if(!hp) return
+    renderHealth(entity)
+  }
+  if(entity.name === "§c§lTentacle King") {
+    const hp = Scoreboard.getLines().find(e => e.includes("§cTentacle King"))
+    if(!hp) return
+    renderHealth(entity)
+  }
+  if(entity.name === "§c§lTentacle Echo§c§lKuudra") {
+    const hp = Scoreboard.getLines().find(e => e.includes("§cTentacle Echo"))
+    if(!hp) return
+    renderHealth(entity)
+  }
+  if(entity.name === "§c§lTentacle Zulu") {
+    const hp = Scoreboard.getLines().find(e => e.includes("§cTentacle Zulu"))
+    if(!hp) return
+    renderHealth(entity)
+  }
 });
+
+function renderHealthDisplay(entity) {
+  Tessellator.drawString(`${entity.name}`, entity.x, entity.y + 20, entity.z, 0xffffff, true, 1, false);
+}
