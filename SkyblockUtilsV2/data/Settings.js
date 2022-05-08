@@ -122,6 +122,14 @@ class Settings {
   })
   customDamageScale = 50;
 
+    @SwitchProperty({
+    name: "Hide Armor Stands",
+    description: "Hide all ArmorStands to improve FPS.\nDefaults to §cDisabled§r.",
+    category: "QOL",
+    subcategory: "Hider"
+  })
+  hideArmorStands = false;
+
   constructor() {
     this.initialize(this);
     this.addDependency("Display Waypoint Distance", "Waypoint shown");
