@@ -97,7 +97,7 @@ class Settings {
   //Damage Splash
   @SwitchProperty({
     name: "Custom Damage Splash",
-    description: "Displays a custom Damage Splash. If this is Disabled the module will not modify the Damage Splash.\nDefaults to §cDisabled§r.",
+    description: "Displays a custom Damage Splash. If this is Disabled the module will not modify the Damage Splash.\nDefaults to §cDisabled§r.\nCapped at 15 active Splashes at the same time to reduce lag.",
     category: "QOL",
     subcategory: "Damage Splash"
   })
