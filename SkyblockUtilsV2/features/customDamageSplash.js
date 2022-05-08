@@ -16,9 +16,9 @@ register("renderEntity", (entity, pos, idk, event) => {
 
 register("renderWorld", () => {
   if (!Settings.customDamageSplash) return;
-  if (global.damageText.length === 0) return;
+  if (damageText.length === 0 || damageText.length > 10) return;
   if (Settings.customDamageType === "Hidden") return;
-  global.damageText.forEach((dmg) => {
+  damageText.forEach((dmg) => {
     Tessellator.drawString(`${dmg.name}`, dmg.x, dmg.y, dmg.z, 0xffffff, true, getDmgScale(Settings.customDamageType), false);
   });
 });
