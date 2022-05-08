@@ -6,9 +6,9 @@ import * as Const from "../utils/constants";
 let damageText = [];
 
 register("renderEntity", (entity, pos, idk, event) => {
-  if(Settings.hideArmorStands) {
-    if(entity instanceof EntityArmorStand) {
-      return cancel(event)
+  if (Settings.hideArmorStands) {
+    if (entity instanceof EntityArmorStand) {
+      cancel(event);
     }
   }
   if (!Settings.customDamageSplash) return;
