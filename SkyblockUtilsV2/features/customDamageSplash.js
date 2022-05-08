@@ -6,6 +6,7 @@ import * as Const from "../utils/constants";
 let damageText = [];
 
 register("renderEntity", (entity, pos, idk, event) => {
+  if (!Settings.customDamageSplash) return;
   if (entity.name.includes("✧") || !isNaN(Number(entity.name.replace("§", "")))) {
     cancel(event);
     if (Const.customDamageTypes[Settings.customDamageType] === "Hidden") return;
