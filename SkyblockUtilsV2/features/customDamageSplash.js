@@ -30,6 +30,7 @@ register("step", () => {
 }).setDelay(3);
 
 function getDamageScale(type) {
+  console.log(type)
   if (type === "Big") return 0.05;
   if (type === "Normal") return 0.03;
   if (type === "Small") return 0.01;
