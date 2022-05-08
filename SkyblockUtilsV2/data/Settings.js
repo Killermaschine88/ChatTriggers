@@ -110,7 +110,7 @@ class Settings {
     subcategory: "Damage Splash",
     options: Const.customDamageTypes,
   })
-  customDamageType = Const.customDamageTypes[2];
+  customDamageType = 2;
 
   @DecimalSliderProperty({
     name: "Custom Damage Scale",
