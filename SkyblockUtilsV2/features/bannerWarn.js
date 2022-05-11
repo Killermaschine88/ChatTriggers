@@ -26,10 +26,10 @@ register("playerInteract", (action) => {
   if (action.toString() === "RIGHT_CLICK_BLOCK") {
     if (once % 2) return;
     once += 1;
-    let holding = player.func_70694_bm();
+    let holding = player?.func_70694_bm();
     if (holding === null) return;
     item = holding.func_82833_r();
-    if (item === "§aTotem of Corruption") {
+    if (item.includes("Totem of Corruption")) {
       running = true;
     }
   }

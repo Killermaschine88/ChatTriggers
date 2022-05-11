@@ -62,7 +62,7 @@ class Settings {
 
     @SwitchProperty({
     name: "Kuudra Health Display",
-    description: "Displays the Health of the Kuudra Tentacles above them.\nDefaults to §cDisabled§r.",
+    description: "Displays the Health of Kuudra/Kuudra Tentacles and the Dropship above them.\nDefaults to §cDisabled§r.",
     category: "Nether",
     subcategory: "Kuudra",
   })
