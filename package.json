@@ -23,10 +23,10 @@
   "prettier": {
     "arrowParens": "always",
     "bracketSameLine": false,
-    "bracketSpacing": true,
+    "bracketSpacing": false,
     "insertPragma": false,
     "jsxSingleQuote": false,
-    "printWidth": 500,
+    "printWidth": 250,
     "proseWrap": "preserve",
     "quoteProps": "as-needed",
     "requirePragma": false,

@@ -5,19 +5,17 @@ import * as Const from "../utils/constants";
 
 @Vigilant(`${Const.moduleName}`, `§e${Const.moduleName}`, {
   getCategoryComparator: () => (a, b) => {
-      const categories = ["Nether", "Waypoint", "QOL"];
+    const categories = ["Nether", "Waypoint", "QOL"];
 
-      return categories.indexOf(a.name) - categories.indexOf(b.name);
+    return categories.indexOf(a.name) - categories.indexOf(b.name);
   },
   getSubcategoryComparator: () => (a, b) => {
     const subcategories = ["Filter", "Damage Splash"];
 
-    return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) -
-        subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
+    return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) - subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
   },
 })
 class Settings {
-
   //Nether
   @SwitchProperty({
     name: "Vanquisher Spawn Message",
@@ -60,7 +58,7 @@ class Settings {
   })
   bannerColor = Color.MAGENTA;
 
-    @SwitchProperty({
+  @SwitchProperty({
     name: "Kuudra Health Display",
     description: "Displays the Health of Kuudra/Kuudra Tentacles and the Dropship above them.\nDefaults to §cDisabled§r.",
     category: "Nether",
@@ -98,7 +96,7 @@ class Settings {
     name: "Phrase Filter",
     description: "Enable/Disable a filter for certain Phrases or Words from a list you make using /su filter add [Words].\nMultiple word lines can be included just use spaces between each word",
     category: "QOL",
-    subcategory: "Filter"
+    subcategory: "Filter",
   })
   phraseFilter = false;
 
@@ -107,7 +105,7 @@ class Settings {
     name: "Custom Damage Splash",
     description: "Displays a custom Damage Splash. If this is Disabled the module will not modify the Damage Splash.\nDefaults to §cDisabled§r.\nCapped at 15 active Splashes at the same time to reduce lag.",
     category: "QOL",
-    subcategory: "Damage Splash"
+    subcategory: "Damage Splash",
   })
   customDamageSplash = false;
 
@@ -130,11 +128,11 @@ class Settings {
   })
   customDamageScale = 50;
 
-    @SwitchProperty({
+  @SwitchProperty({
     name: "Hide Armor Stands",
     description: "Hide all ArmorStands to improve FPS.\nDefaults to §cDisabled§r.",
     category: "QOL",
-    subcategory: "Hider"
+    subcategory: "Hider",
   })
   hideArmorStands = false;
 

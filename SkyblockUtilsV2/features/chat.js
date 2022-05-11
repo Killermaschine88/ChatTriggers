@@ -28,7 +28,7 @@ register("chat", (message, event) => {
 
     if (!x || !y || !z) return;
 
-    waypoints.push({ x: x, y: y, z: z });
+    waypoints.push({x: x, y: y, z: z});
     ChatLib.chat(`${Const.prefix} Added a Waypoint at X: ${x}, Y: ${y}, Z: ${z}!`);
   }
 }).setCriteria("${message}");
