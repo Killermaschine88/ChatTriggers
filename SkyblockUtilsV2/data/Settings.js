@@ -1,7 +1,5 @@
-import { @Vigilant, @SelectorProperty, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, @DecimalSliderProperty,Color } from "Vigilance";
+//import { @Vigilant, @SelectorProperty, @SwitchProperty, @CheckboxProperty, @TextProperty, @ColorProperty, @DecimalSliderProperty,Color } from "Vigilance";
 import * as Const from "../utils/constants";
-
-//Pretty simple for now no? Remember to ignore errors shown in editor
 
 @Vigilant(`${Const.moduleName}`, `§e${Const.moduleName}`, {
   getCategoryComparator: () => (a, b) => {
@@ -10,7 +8,7 @@ import * as Const from "../utils/constants";
     return categories.indexOf(a.name) - categories.indexOf(b.name);
   },
   getSubcategoryComparator: () => (a, b) => {
-    const subcategories = ["Filter", "Damage Splash"];
+    const subcategories = ["Filter", "Damage Splash", "Hider", "Bypass"];
 
     return subcategories.indexOf(a.getValue()[0].attributesExt.subcategory) - subcategories.indexOf(b.getValue()[0].attributesExt.subcategory);
   },
@@ -128,6 +126,7 @@ class Settings {
   })
   customDamageScale = 50;
 
+  //Hider
   @SwitchProperty({
     name: "Hide Armor Stands",
     description: "Hide all ArmorStands to improve FPS.\nDefaults to §cDisabled§r.",
@@ -135,6 +134,15 @@ class Settings {
     subcategory: "Hider",
   })
   hideArmorStands = false;
+
+  //Bypass
+  @SwitchProperty({
+    name: "Hypixel EZ Bypass",
+    description: "Bypass Hypixels stupid EZ filter.\nDefaults to §cDisabled§r.",
+    category: "QOL",
+    subcategory: "Bypass",
+  })
+  ezBypass = false;
 
   constructor() {
     this.initialize(this);

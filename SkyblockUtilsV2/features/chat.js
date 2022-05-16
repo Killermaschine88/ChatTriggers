@@ -2,6 +2,11 @@ import Settings from "../data/Settings";
 import * as Const from "../utils/constants";
 
 register("chat", (message, event) => {
+  //EZ Bypass
+  if (Settings.ezBypass) {
+    message.replace("ez", "e​z"); //Add a ZWS to bypass
+  }
+
   //Filter Unwanted Phrases Filter
   if (Settings.phraseFilter) {
     JSON.parse(FileLib.read(Const.moduleName, `constants/filter.json`)).forEach((word) => {
@@ -20,7 +25,7 @@ register("chat", (message, event) => {
   if (Settings.autoDetectWaypoints && !message.includes("!")) {
     const matches = message.match(/X: (-?\d*\.?\d*?) Y: (-?\d*\.?\d*?) Z: (-?\d*\.?\d*?)/);
 
-    if (!matches[0] || matches[1] || matches[2] || matches[3]) return;
+    if (!matches[0] || !matches[1] || !matches[2] || !matches[3]) return;
 
     let x = matches[1],
       y = matches[2],
