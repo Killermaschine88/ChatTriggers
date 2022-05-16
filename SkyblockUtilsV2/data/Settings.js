@@ -147,8 +147,8 @@ class Settings {
   constructor() {
     this.initialize(this);
     this.addDependency("Display Waypoint Distance", "Waypoint shown");
-    this.addDependency("Banner of Corruption Display Color", "Banner of Corruption Timer");
     this.addDependency("Banner of Corruption Display Text", "Banner of Corruption Timer");
+    this.addDependency("Banner of Corruption Display Color", "Banner of Corruption Timer");
     this.addDependency("Vanquisher Message Chat", "Vanquisher Spawn Message");
     this.addDependency("Custom Damage Type", "Custom Damage Splash");
     this.addDependency("Custom Damage Scale", "Custom Damage Splash");
